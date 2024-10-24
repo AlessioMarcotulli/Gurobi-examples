@@ -6,12 +6,13 @@ model = Model("test")
 # Aggiungi variabili
 x1 = model.addVar(name="x1")
 x2 = model.addVar(name="x2")
+x3 = model.addVar(name="x3")
 
 # Imposta la funzione obiettivo
-model.setObjective(x1 + x2, GRB.MAXIMIZE)
+model.setObjective(x1 + x2 + x3, GRB.MAXIMIZE)
 
 # Aggiungi vincoli
-model.addConstr(x1 + 2 * x2 <= 10, "c0")
+model.addConstr(x1 + 2 * x2 + x3<= 10, "c0")
 
 # Ottimizza il modello
 model.optimize()
